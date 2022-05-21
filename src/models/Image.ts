@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { ImageResponse } from "../interfaces/image/ImageResponse";
-import { Image } from "../interfaces/image/Image";
+import { IImage } from "../interfaces/image/Image";
 
 const ImageSchema = new mongoose.Schema(
   {
@@ -14,9 +14,6 @@ const ImageSchema = new mongoose.Schema(
     profileImage: {
       type: String,
       required: true,
-    },
-    images: {
-      type: [Image],
     },
   },
   {

@@ -1,4 +1,4 @@
-export interface Image {
+export interface IImage {
   imageUrl: string;
   isVideo: boolean;
   isStared: boolean;

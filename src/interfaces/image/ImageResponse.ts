@@ -1,8 +1,8 @@
-import { Image } from "./Image";
+import { IImage } from "./Image";
 
 export interface ImageResponse {
   title: string;
   description: string;
   profileImage: string;
-  images: [Image];
+  images: [IImage];
 }
