@@ -32,7 +32,44 @@ const uploadFileToS3 = (req, res) => __awaiter(void 0, void 0, void 0, function*
             .send(util_1.default.fail(statusCode_1.default.INTERNAL_SERVER_ERROR, responseMessage_1.default.INTERNAL_SERVER_ERROR));
     }
 });
+/**
+ * @route POST /feed
+ * @desc Upload Feed
+ */
+const uploadFeed = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    if (!req.file)
+        return res.status(statusCode_1.default.BAD_REQUEST).send(util_1.default.fail(statusCode_1.default.BAD_REQUEST, responseMessage_1.default.NULL_VALUE));
+    const feedImage = req.file; // 이미지 파일
+    const feedCreateDto = req.body; // 피드 내용
+    try {
+        const data = yield FeedService_1.default.uploadFeed(feedImage, feedCreateDto);
+        res.status(statusCode_1.default.CREATED).send(util_1.default.success(statusCode_1.default.CREATED, responseMessage_1.default.CREATE_FEED_SUCCESS, data));
+    }
+    catch (error) {
+        console.log(error);
+        res.status(statusCode_1.default.INTERNAL_SERVER_ERROR).send(util_1.default.fail(statusCode_1.default.INTERNAL_SERVER_ERROR, responseMessage_1.default.INTERNAL_SERVER_ERROR));
+    }
+});
+/**
+ * @route GET /feed
+ * @desc GET Feed
+ */
+const getFeedByRandom = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield FeedService_1.default.getFeedByRandom();
+        if (!data) {
+            res.status(statusCode_1.default.NOT_FOUND).send(util_1.default.fail(statusCode_1.default.NOT_FOUND, responseMessage_1.default.NOT_FOUND));
+        }
+        res.status(statusCode_1.default.CREATED).send(util_1.default.success(statusCode_1.default.CREATED, responseMessage_1.default.GET_FEED_SUCCESS, data));
+    }
+    catch (error) {
+        console.log(error);
+        res.status(statusCode_1.default.INTERNAL_SERVER_ERROR).send(util_1.default.fail(statusCode_1.default.INTERNAL_SERVER_ERROR, responseMessage_1.default.INTERNAL_SERVER_ERROR));
+    }
+});
 exports.default = {
     uploadFileToS3,
+    uploadFeed,
+    getFeedByRandom
 };
 //# sourceMappingURL=FeedController.js.map

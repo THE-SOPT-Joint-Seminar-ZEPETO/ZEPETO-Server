@@ -10,5 +10,7 @@ const multerConfig_1 = require("../config/multerConfig");
 const router = (0, express_1.Router)();
 const upload = (0, multer_1.default)(multerConfig_1.multerConfig);
 router.post("/", upload.single("image"), controllers_1.FeedController.uploadFileToS3);
+// router.post("/", upload.single("image"), FeedController.uploadFeed);
+router.get("/", controllers_1.FeedController.getFeedByRandom);
 exports.default = router;
 //# sourceMappingURL=FeedRouter.js.map
