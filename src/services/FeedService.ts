@@ -4,7 +4,7 @@ import File from "../models/Feed";
 import fs from "fs";
 import { FileResponseDto } from "../interfaces/file/FileResponseDto";
 
-const uploadFileToS3 = async (fileData: Express.Multer.File): Promise<FileResponseDto> => {
+const uploadFileToS3 = async (fileData: Express.Multer.File, content: string): Promise<FileResponseDto> => {
   try {
     const fileContent: Buffer = fs.readFileSync(fileData.path);
 
@@ -22,6 +22,7 @@ const uploadFileToS3 = async (fileData: Express.Multer.File): Promise<FileRespon
 
     const file = new File({
       link: result.Location,
+      content: content,
       fileName: fileData.originalname,
     });
 
@@ -29,6 +30,7 @@ const uploadFileToS3 = async (fileData: Express.Multer.File): Promise<FileRespon
 
     const data = {
       _id: file._id,
+      content: content,
       link: result.Location,
     };
 
