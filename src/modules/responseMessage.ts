@@ -10,6 +10,8 @@ const message = {
   INVALID_PASSWORD: "비밀번호 오류",
 
   CREATE_FILE_SUCCESS: "이미지 업로드 성공",
+  CREATE_FEED_SUCCESS: "피드 업로드 성공",
+  GET_FEED_SUCCESS: "피드 조회 성공",
   READ_IMAGES_SUCCESS: "이미지 조회 성공",
 };
 
