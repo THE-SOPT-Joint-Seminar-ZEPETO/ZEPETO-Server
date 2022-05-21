@@ -10,9 +10,10 @@ const uploadFileToS3 = async (req: Request, res: Response) => {
   if (!req.file) return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST, message.NULL_VALUE));
 
   const fileData: Express.Multer.File = req.file;
+  const { content } = req.body;
 
   try {
-    const data = await FeedService.uploadFileToS3(fileData);
+    const data = await FeedService.uploadFileToS3(fileData, content);
 
     res.status(statusCode.CREATED).send(util.success(statusCode.CREATED, message.CREATE_FILE_SUCCESS, data));
   } catch (error) {
