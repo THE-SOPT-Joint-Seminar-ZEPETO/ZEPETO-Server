@@ -7,6 +7,7 @@ const router: Router = Router();
 
 const upload = multer(multerConfig);
 
-router.post("/", upload.single("image"), FeedController.uploadFileToS3);
+//router.post("/", upload.single("image"), FeedController.uploadFileToS3);
+router.post("/", upload.single("image"), FeedController.uploadFeed);
 
 export default router;
