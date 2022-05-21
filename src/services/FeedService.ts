@@ -70,7 +70,9 @@ const uploadFeed = async (fileData: Express.Multer.File, feedCreateDto: FeedCrea
     const data = {
       _id: feed._id,
       image: result.Location,
-      content: feedCreateDto.content
+      content: feedCreateDto.content,
+      userName: "zepeto",
+      userProfileImage: "https://thesopt.s3.ap-northeast-2.amazonaws.com/sample-profile-picture.png"
     };
 
     return data;
@@ -80,7 +82,33 @@ const uploadFeed = async (fileData: Express.Multer.File, feedCreateDto: FeedCrea
   }
 };
 
+const getFeedByRandom = async (): Promise<FeedResponseDto | null> => {
+  try {
+    const feedList = await Feed.find();
+
+    if (!feedList) {
+      return null;
+    }
+
+    const index = Math.floor(Math.random()*(feedList.length));
+
+    const data = {
+      _id: feedList[index].id,
+      image: feedList[index].link,
+      content: feedList[index].content,
+      userName: "zepeto",
+      userProfileImage: "https://thesopt.s3.ap-northeast-2.amazonaws.com/sample-profile-picture.png"
+    }
+
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
 export default {
   uploadFileToS3,
-  uploadFeed
+  uploadFeed,
+  getFeedByRandom,
 };

@@ -44,7 +44,28 @@ const uploadFeed = async (req: Request, res: Response) => {
   }
 }
 
+/**
+ * @route GET /feed
+ * @desc GET Feed
+ */
+const getFeedByRandom = async (req: Request, res: Response) => {
+  try {
+    const data = await FeedService.getFeedByRandom();
+
+    if (!data) {
+      res.status(statusCode.NOT_FOUND).send(util.fail(statusCode.NOT_FOUND, message.NOT_FOUND));
+    }
+
+    res.status(statusCode.CREATED).send(util.success(statusCode.CREATED, message.GET_FEED_SUCCESS, data));
+
+  } catch (error) {
+    console.log(error);
+    res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, message.INTERNAL_SERVER_ERROR));
+  }
+}
+
 export default {
   uploadFileToS3,
-  uploadFeed
+  uploadFeed,
+  getFeedByRandom
 };
