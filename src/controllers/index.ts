@@ -1,5 +1,3 @@
-import UserController from "./UserController";
-import ReviewController from "./ReviewController";
-import MovieController from "./MovieController";
-// controller index file
-export { UserController, ReviewController, MovieController };
+import FeedController from "./FeedController";
+
+export { FeedController };

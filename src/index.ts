@@ -34,7 +34,7 @@ app
   .listen(config.port, () => {
     console.log(`
     ################################################
-          🛡️  Server listening on port 🛡️
+          🛡️  Server listening on ${config.port} 🛡️
     ################################################
   `);
   })

@@ -8,6 +8,8 @@ const message = {
   INTERNAL_SERVER_ERROR: "서버 내부 오류",
   INVALID_TOKEN: "잘못된 토큰입니다.",
   INVALID_PASSWORD: "비밀번호 오류",
+
+  CREATE_FILE_SUCCESS: "이미지 업로드 성공",
 };
 
 export default message;

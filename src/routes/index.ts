@@ -1,13 +1,9 @@
 //router index file
 import { Router } from "express";
-import ReviewRouter from "./ReviewRouter";
-import UserRouter from "./UserRouter";
-import MovieRouter from "./MovieRouter";
+import FeedRouter from "./FeedRouter";
 
 const router: Router = Router();
 
-router.use("/user", UserRouter);
-router.use("/review", ReviewRouter);
-router.use("/movie", MovieRouter);
+router.use("/feed", FeedRouter);
 
 export default router;
