@@ -21,7 +21,7 @@
 
 ## API Docs
 
-[ZEPETO API Docs]()
+[ZEPETO API Docs](https://www.notion.so/q-bit/49527b637b814dc7befe884b1d52cb7e?v=3eae8bb76cb8445a9a3e646c2628ddba)
 
 <br>
 <br>
